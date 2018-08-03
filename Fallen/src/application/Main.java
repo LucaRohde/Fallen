@@ -2,6 +2,7 @@ package application;
 	
 import java.io.IOException;
 
+import application.util.FileHandler;
 import application.view.StartWindowController;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -19,6 +20,7 @@ public class Main extends Application {
 			BorderPane root = new BorderPane();
 			primaryStage.setScene(loadScene("view/StartWindow.fxml"));
 			primaryStage.show();
+			FileHandler.writeInFile("Test", FileHandler.readOutString("Test"));
 			controllerUpdate();
 		} catch(Exception e) {
 			e.printStackTrace();

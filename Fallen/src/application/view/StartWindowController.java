@@ -27,9 +27,7 @@ public class StartWindowController {
 	private void changeHeaderButtonAction() {
 
 		try {
-			header.setText(
-					FileHandler.readOutString("Test")
-					);
+			header.setText(FileHandler.readOutString("Test").get(0));
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
