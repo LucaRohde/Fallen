@@ -20,24 +20,35 @@ public class StartWindowController {
 	@FXML
 	private Label header = new Label("The Fallen");
 
-	@FXML
-	private Button changeHeaderButton = new Button("Ändere Überschrift");
+//	@FXML
+//	private Button changeHeaderButton = new Button("Ändere Überschrift");
 
 	@FXML
-	private void changeHeaderButtonAction() {
-
-		try {
-			header.setText(FileHandler.readOutString("Test").get(0));
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+	private Button readOnly = new Button();
+	
+//	@FXML
+//	private void changeHeaderButtonAction() {
+//
+//		try {
+//			header.setText(FileHandler.readOutString("Test").get(0));
+//		} catch (IOException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}
+//	}
+	
+	@FXML
+	private void readOnlyButtonAction() {
+		
+		main.loadScene("view/EditWindow.fxml");
+		
 	}
 
 	@FXML
 	private void initialize() {
 		header.setText("The Fallen");
-		changeHeaderButton.setText("Ändere Überschrift");
+//		changeHeaderButton.setText("Ändere Überschrift");
+		readOnly.setText("Nur lesen");
 	}
 
 	public static void setMain(Main main) {

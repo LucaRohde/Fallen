@@ -3,6 +3,7 @@ package application;
 import java.io.IOException;
 
 import application.util.FileHandler;
+import application.view.EditWindowController;
 import application.view.StartWindowController;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -13,13 +14,16 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 
 
+
 public class Main extends Application {
+	public Stage primaryStage;
 	@Override
 	public void start(Stage primaryStage) {
 		try {
 			BorderPane root = new BorderPane();
-			primaryStage.setScene(loadScene("view/StartWindow.fxml"));
-			primaryStage.show();
+			this.primaryStage=primaryStage;
+			this.primaryStage.setScene(loadScene("view/StartWindow.fxml"));
+			this.primaryStage.show();
 			FileHandler.writeInFile("Test", FileHandler.readOutString("Test"));
 			controllerUpdate();
 		} catch(Exception e) {
@@ -41,6 +45,7 @@ public class Main extends Application {
 				BorderPane border = (BorderPane) loader.load();
 				
 				Scene scene = new Scene(border);
+				updatePrimaryStage(scene);
 				return scene;
 
 		} catch (IOException e) {
@@ -53,5 +58,16 @@ public class Main extends Application {
 	}//Referenziert die Main in den Controllern
 	public void controllerUpdate() {
 		StartWindowController.setMain(this);
+		EditWindowController.setMain(this);
+	}
+	
+	//Sets up Primary Stage and shows it
+	public void updatePrimaryStage(Scene scene) {
+		
+
+		primaryStage.setScene(scene);
+		primaryStage.show();
+		
+		
 	}
 }
