@@ -13,32 +13,17 @@ public class StartWindowController {
 
 	public static Main main;
 
-	public StartWindowController() {
-		// TODO Auto-generated constructor stub
-	}
 
 	@FXML
 	private Label header = new Label("The Fallen");
 
-//	@FXML
-//	private Button changeHeaderButton = new Button("Ändere Überschrift");
 
 	@FXML
-	private Button readOnly = new Button();
+	private Button editButton = new Button();
 	
-//	@FXML
-//	private void changeHeaderButtonAction() {
-//
-//		try {
-//			header.setText(FileHandler.readOutString("Test").get(0));
-//		} catch (IOException e) {
-//			// TODO Auto-generated catch block
-//			e.printStackTrace();
-//		}
-//	}
 	
 	@FXML
-	private void readOnlyButtonAction() {
+	private void editButtonAction() {
 		
 		main.loadScene("view/EditWindow.fxml");
 		
@@ -47,8 +32,7 @@ public class StartWindowController {
 	@FXML
 	private void initialize() {
 		header.setText("The Fallen");
-//		changeHeaderButton.setText("Ändere Überschrift");
-		readOnly.setText("Nur lesen");
+		editButton.setText("Editieren");
 	}
 
 	public static void setMain(Main main) {

@@ -1,5 +1,6 @@
 package application.view;
 
+import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -11,17 +12,18 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
+import javafx.stage.FileChooser;
 
 public class EditWindowController {
 
 	public static Main main;
 
-	public EditWindowController() {
-		// TODO Auto-generated constructor stub
-	}
-
+	//The Chosen File; it used to be like a brother to you
+	File theChosenOne= null;
 	
-
+	@FXML
+	private Label header = new Label();
+	
 	@FXML
 	private Button saveButton = new Button();
 
@@ -37,7 +39,7 @@ public class EditWindowController {
 		ArrayList<String> arrayList = new ArrayList<String>(Arrays.asList(text.getText().split("\n")));
 		
 		try {
-			FileHandler.writeInFile("Test", arrayList);
+			FileHandler.writeInFile(theChosenOne.getName(), arrayList);
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -56,12 +58,16 @@ public class EditWindowController {
 
 	@FXML
 	private void initialize() {
+		
+		theChosenOne= FileHandler.fileChooser.showOpenDialog(main.primaryStage);
 		saveButton.setText("Speichern");
+		backButton.setText("Zurück");
+		header.setText(theChosenOne.getName().replace(".txt", ""));
 		
 		//Gets text of the File into the textArea
 		try {
-			for (int i = 0; i < FileHandler.readOutString("Test").size(); i++) {
-				text.setText(text.getText()+FileHandler.readOutString("Test").get(i)+"\n");
+			for (int i = 0; i < FileHandler.readOutString(theChosenOne.getName()).size(); i++) {
+				text.setText(text.getText()+FileHandler.readOutString(theChosenOne.getName()).get(i)+"\n");
 			}
 		} catch (IOException e) {
 			// TODO Auto-generated catch block

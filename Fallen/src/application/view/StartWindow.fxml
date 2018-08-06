@@ -9,7 +9,7 @@
       <Label fx:id="header" text="header" BorderPane.alignment="CENTER" />
    </top>
    <left>
-      <Button fx:id="readOnly" mnemonicParsing="false" onAction="#readOnlyButtonAction" text="Button" BorderPane.alignment="CENTER" />
+      <Button fx:id="editButton" mnemonicParsing="false" onAction="#editButtonAction" text="Button" BorderPane.alignment="CENTER" />
    </left>
    <right>
       <Button mnemonicParsing="false" text="Button" BorderPane.alignment="CENTER" />

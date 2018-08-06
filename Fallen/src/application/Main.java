@@ -1,5 +1,6 @@
 package application;
 	
+import java.io.File;
 import java.io.IOException;
 
 import application.util.FileHandler;
@@ -24,7 +25,6 @@ public class Main extends Application {
 			this.primaryStage=primaryStage;
 			this.primaryStage.setScene(loadScene("view/StartWindow.fxml"));
 			this.primaryStage.show();
-			FileHandler.writeInFile("Test", FileHandler.readOutString("Test"));
 			controllerUpdate();
 		} catch(Exception e) {
 			e.printStackTrace();
@@ -32,11 +32,12 @@ public class Main extends Application {
 	}
 	
 	public static void main(String[] args) {
+		FileHandler.fileChooser.setInitialDirectory(new File("src/application/resource/") );
 		launch(args);
 	}
 	
 	
-	//Diese Methode lädt die gewünschte FXML
+	//Loads the wanted FXML-needs full path
 	public Scene loadScene(String path) {
 		try {
 			FXMLLoader loader = new FXMLLoader();
@@ -50,7 +51,7 @@ public class Main extends Application {
 
 		} catch (IOException e) {
 			
-			//Nur wenn es nicht klappt wird ein Border Pane mit ERROR geladen
+			//If something went wrong it loads an error
 			e.printStackTrace();
 			return new Scene(new BorderPane(new Label("Error")));
 		}
