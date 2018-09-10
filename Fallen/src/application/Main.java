@@ -4,6 +4,7 @@ import java.io.File;
 import java.io.IOException;
 
 import application.util.FileHandler;
+import application.view.CharacterCreatorWindowController;
 import application.view.EditWindowController;
 import application.view.StartWindowController;
 import javafx.application.Application;
@@ -60,6 +61,7 @@ public class Main extends Application {
 	public void controllerUpdate() {
 		StartWindowController.setMain(this);
 		EditWindowController.setMain(this);
+		CharacterCreatorWindowController.setMain(this);
 	}
 	
 	//Sets up Primary Stage and shows it

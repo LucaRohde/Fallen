@@ -9,13 +9,14 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.stage.FileChooser;
 
 public class FileHandler {
 
 	public final static FileChooser fileChooser = new FileChooser();
-	
-	
+
 	// Gibt die erste Zeile des txt-Dokuments als ArrayList<String> zurück
 	public static ArrayList<String> readOutString(String string) throws IOException {
 
@@ -33,22 +34,22 @@ public class FileHandler {
 	}
 
 	// Erstellt eine Txt im Resource Ordner
-	public static void createFile(String nameOfFile) throws IOException {
-		File f = new File("src/application/resource/" + nameOfFile);
+	public static void createFile(String pathOfFile) throws IOException {
+		File f = new File("src/application/resource/" + pathOfFile);
 
 		f.getParentFile().mkdirs();
 		f.createNewFile();
 
 	}
 
-	public static void writeInFile(String nameOfFile, ArrayList<String> content) throws IOException {
+	public static void writeInFile(String pathOfFile, ArrayList<String> content) throws IOException {
 		BufferedWriter bw = null;
 		FileWriter fw = null;
 
-		fw = new FileWriter("src/application/resource/" + nameOfFile);
+		fw = new FileWriter("src/application/resource/" + pathOfFile);
 		bw = new BufferedWriter(fw);
 		for (int i = 0; i < content.size(); i++) {
-			bw.write(content.get(i)+"\n");
+			bw.write(content.get(i) + "\n");
 		}
 
 		if (bw != null)
@@ -58,4 +59,19 @@ public class FileHandler {
 			fw.close();
 	}
 
+	// returns every name of the files in the folder as an observable list
+	public static ObservableList<String> getNameOfFilesInFolder(String pathOfFolder) {
+
+		File[] listOfFiles = new File("src/application/resource/"+pathOfFolder).listFiles();
+		ObservableList<String> obsList =  FXCollections.observableArrayList();
+		for (int i = 0; i < listOfFiles.length; i++) {
+			if (listOfFiles[i].isFile()) {
+				obsList.add(listOfFiles[i].getName());
+			} else if (listOfFiles[i].isDirectory()) {
+				
+			}
+
+		}
+		return obsList;
+	}
 }

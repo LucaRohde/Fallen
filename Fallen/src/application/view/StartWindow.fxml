@@ -9,9 +9,9 @@
       <Label fx:id="header" text="header" BorderPane.alignment="CENTER" />
    </top>
    <left>
-      <Button fx:id="editButton" mnemonicParsing="false" onAction="#editButtonAction" text="Button" BorderPane.alignment="CENTER" />
+      <Button fx:id="createCharButton" mnemonicParsing="false" onAction="#createCharakterButtonAction" text="Button" BorderPane.alignment="CENTER" />
    </left>
    <right>
-      <Button mnemonicParsing="false" text="Button" BorderPane.alignment="CENTER" />
+      <Button fx:id="editButton" mnemonicParsing="false" onAction="#editButtonAction" text="Button" BorderPane.alignment="CENTER" />
    </right>
 </BorderPane>

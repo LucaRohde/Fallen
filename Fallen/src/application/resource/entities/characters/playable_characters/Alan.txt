@@ -1,0 +1,3 @@
+Name:Alan
+Race:human
+Class:wizard
